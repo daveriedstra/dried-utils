@@ -1,0 +1,36 @@
+#N canvas 730 460 690 375 10;
+#X obj 46 -48 ctlin;
+#X obj 191 70 spigot;
+#X obj 164 105 route;
+#X obj 46 26 list prepend;
+#X obj 265 -9 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 265 12 expr 1 - $f1;
+#X obj 46 48 spigot;
+#X text 90 47 don't output while selecting;
+#X obj 164 246 outlet;
+#X text 207 -92 toggle on and use a cc to select it;
+#X text 207 -70 toggle off to use it;
+#X obj 164 125 list prepend 1;
+#X obj 164 147 stripnote;
+#X obj 164 216 == 0;
+#X obj 164 168 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 164 191 f 0;
+#X connect 0 0 3 0;
+#X connect 0 1 1 0;
+#X connect 0 1 3 1;
+#X connect 1 0 2 1;
+#X connect 2 0 11 0;
+#X connect 3 0 6 0;
+#X connect 4 0 1 1;
+#X connect 4 0 5 0;
+#X connect 5 0 6 1;
+#X connect 6 0 2 0;
+#X connect 11 0 12 0;
+#X connect 12 0 14 0;
+#X connect 13 0 15 1;
+#X connect 13 0 8 0;
+#X connect 14 0 15 0;
+#X connect 15 0 13 0;
+#X coords 0 -1 1 1 60 20 1 222 -11;
