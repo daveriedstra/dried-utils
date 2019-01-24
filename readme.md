@@ -17,6 +17,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable.
 - **cc-t** - like `cc-b` but alternately sends `1` and `0`. Useful for buttons masquerading as toggles.
 - **some-harmonic** - outputs a new frequency which is a random integer multiple of the input frequency (or the last output frequency), wrapped to be lower than a given frequency. `$1`: wrap point and start frequency if none specified. `$2`: lower harmonic limit. `$3`: upper harmonic limit.
 - **line-eased~** - generates a ramp with a sinusoidal ease-in-out curve. Same API as `line~` but ignores `stop` messages.
+- **pan~** - drop-in replacement for `pan` but using signal as right input for smoother panning changes
 - **pop~** - makes an electronic-ey pop sound.
 - **rand-range** - outputs a random int between two argument ints. Bang for a new number.
 - **some-subharmonic** - like `some-harmonic` but with subharmonics.

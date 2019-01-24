@@ -1,0 +1,27 @@
+#N canvas 495 300 450 300 10;
+#X obj 21 -64 inlet~;
+#X obj 21 146 outlet~;
+#X obj 127 146 outlet~;
+#X obj 142 -67 inlet~;
+#X obj 21 72 *~;
+#X obj 127 72 *~;
+#X obj 36 37 sin~;
+#X obj 142 37 sin~;
+#X obj 36 16 +~ 0.25;
+#X obj 142 -25 /~ 4;
+#X obj 142 16 +~ 0;
+#X obj 142 -46 expr~ ($v1 / 90) + 0.5;
+#X text 211 11 pan~ like pan but smootherleft: signal to panright:
+panning (-45 to 45);
+#X connect 0 0 4 0;
+#X connect 0 0 5 0;
+#X connect 3 0 11 0;
+#X connect 4 0 1 0;
+#X connect 5 0 2 0;
+#X connect 6 0 4 1;
+#X connect 7 0 5 1;
+#X connect 8 0 6 0;
+#X connect 9 0 8 0;
+#X connect 9 0 10 0;
+#X connect 10 0 7 0;
+#X connect 11 0 9 0;
