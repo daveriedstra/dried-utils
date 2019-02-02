@@ -21,3 +21,4 @@ I mostly use purr-data, so vanilla pd compatibility is questionable.
 - **pop~** - makes an electronic-ey pop sound.
 - **rand-range** - outputs a random int between two argument ints. Bang for a new number.
 - **some-subharmonic** - like `some-harmonic` but with subharmonics.
+- **spigot~** - a spigot~ for audio that opens when sent its creation argument, closes for anything else.
