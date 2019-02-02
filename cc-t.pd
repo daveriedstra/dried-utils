@@ -22,7 +22,6 @@
 #X text 309 113 output ctl number when selected;
 #X obj 295 39 select 1;
 #X obj 432 -53 loadbang;
-#X obj 432 -9 select 0;
 #X obj 477 12 s \$0-cc-start;
 #X obj 200 100 r \$0-cc-start;
 #X obj 443 50 s \$0-msg-spigot;
@@ -49,11 +48,10 @@
 #X connect 15 0 13 0;
 #X connect 17 0 16 0;
 #X connect 19 0 17 0;
-#X connect 20 0 27 0;
-#X connect 21 1 22 0;
-#X connect 21 1 25 0;
-#X connect 23 0 2 1;
-#X connect 25 0 24 0;
-#X connect 26 0 6 1;
-#X connect 27 0 21 0;
+#X connect 20 0 26 0;
+#X connect 22 0 2 1;
+#X connect 24 0 23 0;
+#X connect 25 0 6 1;
+#X connect 26 0 21 0;
+#X connect 26 0 24 0;
 #X coords 0 -1 1 1 110 20 1 173 -12;

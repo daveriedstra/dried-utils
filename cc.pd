@@ -20,7 +20,6 @@
 #X obj 551 66 loadbang;
 #X obj 551 88 f \$2;
 #X text 297 73 \$1: scaled range\$2: start cc num;
-#X obj 551 110 select 0;
 #X obj 596 131 s \$0-cc-start;
 #X obj 294 262 r \$0-cc-start;
 #X obj 583 178 s \$0-msg-spigot;
@@ -44,9 +43,8 @@
 #X connect 16 0 14 0;
 #X connect 17 0 18 0;
 #X connect 18 0 20 0;
-#X connect 20 1 21 0;
-#X connect 20 1 24 0;
-#X connect 22 0 2 1;
-#X connect 24 0 23 0;
-#X connect 25 0 6 1;
+#X connect 18 0 23 0;
+#X connect 21 0 2 1;
+#X connect 23 0 22 0;
+#X connect 24 0 6 1;
 #X coords 0 -1 1 1 120 20 1 253 110;
