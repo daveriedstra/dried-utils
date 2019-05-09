@@ -1,0 +1,20 @@
+#N canvas 875 717 450 325 12;
+#X obj 136 73 osc~ \$1;
+#X text 12 9 lfo~ args:1 - freq (hz)2 - min val3 - max val;
+#X obj 136 109 expr~ ($v1 + 1) / 2 * ($f3 - $f2) + $f2;
+#X obj 271 73 f \$2;
+#X obj 406 73 f \$3;
+#X obj 310 24 loadbang;
+#X obj 136 145 outlet~;
+#X obj 249 26 inlet;
+#X obj 406 27 inlet;
+#X obj 136 37 inlet~;
+#X connect 0 0 2 0;
+#X connect 2 0 6 0;
+#X connect 3 0 2 1;
+#X connect 4 0 2 2;
+#X connect 5 0 3 0;
+#X connect 5 0 4 0;
+#X connect 7 0 3 0;
+#X connect 8 0 4 0;
+#X connect 9 0 0 0;
