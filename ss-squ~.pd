@@ -1,4 +1,4 @@
-#N canvas 1355 116 466 350 12;
+#N canvas 1355 150 466 350 12;
 #X obj 307 15 table \$0-waveform;
 #N canvas 1200 372 509 453 build-table 0;
 #X obj 160 -37 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -50,7 +50,6 @@
 #X connect 18 0 19 0;
 #X connect 19 0 2 0;
 #X restore 307 44 pd build-table;
-#X obj 307 73 loadbang;
 #X obj 307 102 f \$2;
 #X obj 307 131 s \$0-harmonics;
 #X text 6 10 sinesum square wavemade of an arbitrary number of harmonicsargs:1
@@ -61,9 +60,10 @@
 #X obj 6 238 tabread4~ \$0-waveform;
 #X obj 6 263 outlet~;
 #X obj 6 163 inlet~;
+#X obj 307 73 initbang;
 #X connect 2 0 3 0;
-#X connect 3 0 4 0;
+#X connect 5 0 6 0;
 #X connect 6 0 7 0;
 #X connect 7 0 8 0;
-#X connect 8 0 9 0;
-#X connect 10 0 6 0;
+#X connect 9 0 5 0;
+#X connect 10 0 2 0;
