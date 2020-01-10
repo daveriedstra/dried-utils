@@ -1,6 +1,6 @@
-#N canvas 1355 181 466 350 12;
+#N canvas 779 264 466 350 12;
 #X obj 306 10 table \$0-waveform;
-#N canvas 689 218 509 407 build-table 0;
+#N canvas 1249 249 509 430 build-table 0;
 #X obj 160 -37 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 160 61 until;
@@ -57,9 +57,13 @@
 , f 41;
 #X obj 6 147 inlet~;
 #X obj 306 68 initbang;
+#X obj 378 68 inlet;
+#X obj 378 97 int;
 #X connect 2 0 3 0;
 #X connect 4 0 5 0;
 #X connect 5 0 6 0;
 #X connect 6 0 7 0;
 #X connect 9 0 4 0;
 #X connect 10 0 2 0;
+#X connect 11 0 12 0;
+#X connect 12 0 3 0;
