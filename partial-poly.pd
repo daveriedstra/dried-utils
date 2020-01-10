@@ -1,0 +1,164 @@
+#N canvas 605 106 733 380 12;
+#N canvas 563 427 586 508 relative 0;
+#X obj 134 24 inlet;
+#X obj 209 22 inlet;
+#X obj 134 294 outlet;
+#X obj 271 294 outlet;
+#X obj 134 53 pack f f;
+#X obj 134 82 t l l;
+#X obj 95 234 gate 2;
+#X obj 166 151 expr if (_\$0_base == 0 || $f1 == _\$0_base || (_\$0_gate
+== 1 && _\$0_prev_gate == 2) \, 1 \, 2), f 48;
+#N canvas 580 429 450 323 store-gate-state 0;
+#X obj 33 35 inlet;
+#X obj 74 201 v _\$0_gate;
+#X obj 74 230 v _\$0_prev_gate;
+#X obj 33 146 t f b;
+#X obj 107 58 r \$0-panic;
+#X obj 107 87 t b b;
+#X msg 139 150 2;
+#X msg 107 116 1;
+#X text 213 24 panic designed to reset gate;
+#X obj 188 58 r \$0-reset-gate;
+#X obj 304 58 initbang;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X connect 3 0 1 0;
+#X connect 3 1 1 0;
+#X connect 4 0 5 0;
+#X connect 5 0 7 0;
+#X connect 5 1 6 0;
+#X connect 6 0 1 0;
+#X connect 7 0 3 0;
+#X connect 9 0 5 0;
+#X connect 10 0 5 0;
+#X restore 166 199 pd store-gate-state;
+#N canvas 1220 304 450 323 set-root 0;
+#X obj 24 21 inlet;
+#X obj 24 250 mtof;
+#X obj 135 279 v _\$0_base;
+#X msg 24 205 \$1;
+#X obj 34 279 v _\$0_base_hz;
+#X obj 24 309 s \$0_base_hz;
+#X text 60 205 at this point \, do set root;
+#X obj 135 249 s \$0_base_midi;
+#X obj 24 50 t l l, f 6;
+#X obj 24 110 spigot;
+#X msg 63 80 \$2;
+#X text 74 110 set root if vel > 0;
+#X text 74 21 root in midi note-vel pair;
+#X obj 330 114 == 0;
+#X obj 330 143 select 1;
+#X obj 330 172 t b b;
+#X obj 362 230 s \$0-poly-stop;
+#X obj 330 201 s \$0-reset-gate;
+#X msg 36 174 0;
+#X obj 36 145 r \$0-panic;
+#X text 330 67 on noteoff of held root pitch \, stop poly & reset
+gate;
+#X connect 0 0 8 0;
+#X connect 1 0 4 0;
+#X connect 1 0 5 0;
+#X connect 3 0 2 0;
+#X connect 3 0 1 0;
+#X connect 3 0 7 0;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 9 0 3 0;
+#X connect 10 0 9 1;
+#X connect 10 0 13 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 15 0 17 0;
+#X connect 15 1 16 0;
+#X connect 18 0 3 0;
+#X connect 19 0 18 0;
+#X restore 43 264 pd set-root;
+#X text 199 77 when a noteon comes in \, open the gate and save the
+pitch.pass all other pitchesuntil the first pitch's noteoff.;
+#N canvas 1237 416 450 323 make-partial-note 0;
+#X obj 21 17 inlet;
+#X obj 21 238 outlet;
+#X obj 93 238 outlet;
+#X obj 21 105 -;
+#X msg 21 76 \$1;
+#X obj 21 134 expr if ($f1 >= 0 \, ($f1 * _\$0_base_hz) \, (_\$0_base_hz
+/ abs($f1))), f 22;
+#X obj 21 47 t l l;
+#X msg 93 212 \$2;
+#X obj 62 76 r \$0_base_midi;
+#X text 189 134 multiply if above root \, divide if below;
+#X text 189 76 difference in semitones = partial;
+#X connect 0 0 6 0;
+#X connect 3 0 5 0;
+#X connect 4 0 3 0;
+#X connect 5 0 1 0;
+#X connect 6 0 4 0;
+#X connect 6 1 7 0;
+#X connect 7 0 2 0;
+#X connect 8 0 3 1;
+#X restore 134 264 pd make-partial-note;
+#X connect 0 0 4 0;
+#X connect 1 0 4 1;
+#X connect 4 0 5 0;
+#X connect 5 0 6 1;
+#X connect 5 1 7 0;
+#X connect 6 0 9 0;
+#X connect 6 1 11 0;
+#X connect 7 0 6 0;
+#X connect 7 0 8 0;
+#X connect 11 0 2 0;
+#X connect 11 1 3 0;
+#X restore 141 78 pd relative;
+#X msg 23 142 stop;
+#X obj 33 112 r \$0-panic;
+#X obj 23 81 r \$0-poly-stop;
+#X obj 151 112 r \$0-poly-clear;
+#X msg 151 141 clear;
+#X obj 141 232 outlet;
+#X obj 141 20 inlet;
+#X obj 215 20 inlet;
+#X obj 141 202 poly \$1, f 11;
+#X text 341 20 dried/partial-polyplay partials above a held pitch
+;
+#X text 341 66 use like [poly]. hold down a note \, this will becomethe
+"root" pitch. playing a pitch above or belowwill generate the partial
+of the intervaleg: holding A4 and playing Bb4 will give the 1stpartial
+\, ie A4. playing C4 above the A4 will givethe 3rd partial \, ie E2.
+;
+#X text 341 175 the normal interface to poly is supported.;
+#N canvas 1047 578 450 323 poly-msgs 0;
+#X obj 49 34 inlet;
+#X obj 49 140 outlet;
+#X obj 49 62 route float list;
+#X obj 103 140 outlet;
+#X obj 158 90 s \$0-poly-msgs;
+#X obj 63 90 unpack f f;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X connect 2 1 5 0;
+#X connect 2 2 4 0;
+#X connect 5 0 1 0;
+#X connect 5 1 3 0;
+#X restore 141 49 pd poly-msgs;
+#X obj 151 170 r \$0-poly-msgs;
+#X obj 178 232 outlet;
+#X obj 215 232 outlet;
+#X text 341 205 arguments:1) number of voices;
+#X text 341 250 outlets:1) voice number2) pitch (Hz)3) velocity
+;
+#X connect 0 0 9 0;
+#X connect 0 1 9 1;
+#X connect 1 0 9 0;
+#X connect 2 0 1 0;
+#X connect 3 0 1 0;
+#X connect 4 0 5 0;
+#X connect 5 0 9 0;
+#X connect 7 0 13 0;
+#X connect 8 0 0 1;
+#X connect 9 0 6 0;
+#X connect 9 1 15 0;
+#X connect 9 2 16 0;
+#X connect 13 0 0 0;
+#X connect 13 1 0 1;
+#X connect 14 0 9 0;

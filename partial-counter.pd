@@ -1,0 +1,63 @@
+#N canvas 1081 436 625 195 12;
+#X obj 17 44 inlet;
+#X obj 89 44 inlet;
+#X obj 161 44 inlet;
+#X text 17 15 up;
+#X text 89 15 down;
+#X text 161 15 reset;
+#N canvas 666 628 450 392 multiplier-counter 0;
+#X msg 212 98 1;
+#X obj 245 239 outlet;
+#X msg 107 16 1;
+#X msg 148 38 -1;
+#X obj 156 163 f 1;
+#X obj 191 163 +;
+#X obj 212 72 t b b;
+#X msg 244 98 0;
+#X text 150 -18 inc;
+#X text 191 9 dec;
+#X text 255 36 reset;
+#X obj 192 206 select 0;
+#X obj 107 72 t b f;
+#X text 264 205 skip 0;
+#X obj 107 -18 inlet;
+#X obj 148 9 inlet;
+#X obj 212 36 inlet;
+#X connect 0 0 4 0;
+#X connect 2 0 12 0;
+#X connect 3 0 12 0;
+#X connect 4 0 5 0;
+#X connect 5 0 4 1;
+#X connect 5 0 11 0;
+#X connect 6 0 0 0;
+#X connect 6 1 7 0;
+#X connect 7 0 5 1;
+#X connect 11 0 4 0;
+#X connect 11 1 1 0;
+#X connect 12 0 4 0;
+#X connect 12 1 5 1;
+#X connect 14 0 2 0;
+#X connect 15 0 3 0;
+#X connect 16 0 6 0;
+#X restore 17 73 pd multiplier-counter;
+#N canvas 985 364 450 323 negative-to-fraction 0;
+#X obj 96 35 inlet;
+#X obj 96 64 moses 0;
+#X obj 113 231 outlet;
+#X obj 55 130 expr 1 / abs($f1);
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 1 2 0;
+#X connect 3 0 2 0;
+#X restore 17 102 pd negative-to-fraction;
+#X obj 17 131 outlet;
+#X text 236 13 dried/partial-countersimple utility to walk up and
+down partials;
+#X text 236 58 bang left to go upbang middle to go downbang right
+to reset to 1below 1 is treated as a fraction (0.5 \, 0.25 \, etc)
+;
+#X connect 0 0 6 0;
+#X connect 1 0 6 1;
+#X connect 2 0 6 2;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
