@@ -15,6 +15,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable.
 - **cc** - simply capture and use a MIDI continuous controller. Open the toggle to begin capturing a controller, and close to select the last used controller. Output is scaled from zero - first-argument. Second argment can be used to set the initial controller number. Right output sends controller number whenever toggle is switched off. _(~~Setting the initial CC number to 0 doesn't work, but any other number does.~~ 0 is now allowed, but passes through all incoming values until a controller is set.)_
 - **cc-b** - like `cc` but sends a bang for values above zero. Useful for buttons. Argument can be used to set initial controller number.
 - **cc-t** - like `cc-b` but alternately sends `1` and `0`. Useful for buttons masquerading as toggles. Argument can be used to set initial controller number.
+- **intuos-pen** - abstraction for simpler use of Wacom Intuos Pen Small (model CTH-480). Uses [hid] under the hood. Does things like normalize output values to 0-1 and simplify the messages (check the patch for details). Only handles pen, not touch or tablet buttons. Won't work with anything but the exact model, modify for your device if you like.
 - **lfo~** - a quick-and-dirty oscillator between two values. Oscillates between `$2` and `$3` at `$1`hz.
 - **line-eased~** - generates a ramp with a sinusoidal ease-in-out curve. Same API as `line~` but ignores `stop` messages.
 - **pan~** - drop-in replacement for `pan` but using signal as right input for smoother panning changes

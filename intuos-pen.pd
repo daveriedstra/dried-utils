@@ -1,0 +1,88 @@
+#N canvas 1108 135 676 352 12;
+#X obj 27 95 hid;
+#N canvas 147 306 450 346 normalize_messages 0;
+#X obj 33 42 inlet;
+#X obj 33 75 route abs rel key;
+#X obj 33 123 route abs_x abs_y abs_distance abs_pressure;
+#X obj 163 152 / 31;
+#X obj 256 152 / 1023;
+#X obj 33 152 / 15200;
+#X obj 107 152 / 9500;
+#X msg 33 181 x \$1;
+#X msg 107 181 y \$1;
+#X msg 163 181 distance \$1;
+#X msg 256 181 pressure \$1;
+#X obj 33 236 outlet;
+#X msg 364 181 tip \$1;
+#X msg 416 181 eraser \$1;
+#X msg 489 181 touching \$1;
+#X obj 364 123 route btn_0 btn_1 btn_10 btn_11 btn_12;
+#X msg 576 181 pen_lower \$1;
+#X msg 670 181 pen_upper \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 2 15 0;
+#X connect 2 0 5 0;
+#X connect 2 1 6 0;
+#X connect 2 2 3 0;
+#X connect 2 3 4 0;
+#X connect 3 0 9 0;
+#X connect 4 0 10 0;
+#X connect 5 0 7 0;
+#X connect 6 0 8 0;
+#X connect 7 0 11 0;
+#X connect 8 0 11 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 0;
+#X connect 12 0 11 0;
+#X connect 14 0 11 0;
+#X connect 15 0 12 0;
+#X connect 15 1 13 0;
+#X connect 15 2 14 0;
+#X connect 15 3 16 0;
+#X connect 15 4 17 0;
+#X connect 16 0 11 0;
+#X connect 17 0 11 0;
+#X restore 27 124 pd normalize_messages;
+#X obj 83 153 outlet;
+#X obj 27 153 outlet;
+#N canvas 1206 630 450 323 open_and_poll 0;
+#X msg 156 129 open 0x056a 0x0302;
+#X obj 80 66 route 0 1;
+#X obj 80 29 inlet;
+#X obj 86 194 outlet;
+#X text 292 25 no way to make this look clean.all it does is open
+the device before polling \, and close it after. all other messages
+are sent to [hid] unmodified.;
+#X obj 124 100 t b b;
+#X msg 124 129 1;
+#X obj 50 101 t b b;
+#X msg 92 130 0;
+#X msg 50 130 close;
+#X connect 0 0 3 0;
+#X connect 1 0 7 0;
+#X connect 1 1 5 0;
+#X connect 1 2 3 0;
+#X connect 2 0 1 0;
+#X connect 5 0 6 0;
+#X connect 5 1 0 0;
+#X connect 6 0 3 0;
+#X connect 7 0 9 0;
+#X connect 7 1 8 0;
+#X connect 8 0 3 0;
+#X connect 9 0 3 0;
+#X restore 27 66 pd open_and_poll;
+#X obj 27 37 inlet;
+#X text 221 20 dried/intuos-penabstraction for simpler usage of the
+wacom intuos pen small.- messages are output in simple terms (two
+element list with one name and value normalized to 0-1)- input automatically
+opens and closes device with polling- other inputs sent directly to
+[hid]- hid right output sent unmodified;
+#X text 221 161 message keys:xydistancepressuretip (in range)eraser
+(in range)touching (either tip or eraser)pen_lower (button)pen_upper
+(button);
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 1 0 3 0;
+#X connect 4 0 0 0;
+#X connect 5 0 4 0;
