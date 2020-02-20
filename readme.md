@@ -18,6 +18,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable.
 - **intuos-pen** - abstraction for simpler use of Wacom Intuos Pen Small (model CTH-480). Uses [hid] under the hood. Does things like normalize output values to 0-1 and simplify the messages (check the patch for details). Only handles pen, not touch or tablet buttons. Won't work with anything but the exact model, modify for your device if you like.
 - **lfo~** - a quick-and-dirty oscillator between two values. Oscillates between `$2` and `$3` at `$1`hz.
 - **line-eased~** - generates a ramp with a sinusoidal ease-in-out curve. Same API as `line~` but ignores `stop` messages.
+- **nano-strip** - simple gui for a single control strip on the Korg nanoKontrol 2. Argument is the lane number from 0 - 7, slider and knob scaled to 0 - 1, buttons output bangs.
 - **pan~** - drop-in replacement for `pan` but using signal as right input for smoother panning changes
 - **partial-counter** - start at 1, bang left for up, mid for down, right to reset, below zero is a fraction.
 - **partial-poly** - allows simple access to just tuned partials with midi keyboard. Held pitch is root, pitches above or below will sound the partial of their semitone difference (eg, an F4 above C4 will sound the 5th partial, ie, E). Use like poly.
