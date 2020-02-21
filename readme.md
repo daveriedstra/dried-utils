@@ -31,4 +31,5 @@ I mostly use purr-data, so vanilla pd compatibility is questionable.
 - **ss-saw~** - a sine-summed sawtooth wave using an arbitrary number of harmonics. `$1`: frequency. `$2`: number of harmonics. Shorthand for the technique described [here](http://write.flossmanuals.net/pure-data/generating-waveforms/).
 - **ss-squ~** - a sine-summed square wave using an arbitrary number of harmonics. `$1`: frequency. `$2`: number of harmonics. Shorthand for the technique described [here](http://write.flossmanuals.net/pure-data/generating-waveforms/).
 - **ss-tri~** - a sine-summed triangle wave using an arbitrary number of harmonics. `$1`: frequency. `$2`: number of harmonics. Shorthand for the technique described [here](http://write.flossmanuals.net/pure-data/generating-waveforms/).
+- **throttle** - rate-limit messages, outputting the last received after `$1` ms. _caveat: trims list selector._
 - **widen~** - set-and-forget stereo widening using the technique described [here](https://www.reddit.com/r/audioengineering/comments/ba338a/heres_a_mixing_trick_stereo_widening_using_phase/). `$1`: "width" of the effect (0 - 1). _NB: Output can be a little louder than 1._
