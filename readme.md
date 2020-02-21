@@ -23,6 +23,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable.
 - **partial-counter** - start at 1, bang left for up, mid for down, right to reset, below zero is a fraction.
 - **partial-poly** - allows simple access to just tuned partials with midi keyboard. Held pitch is root, pitches above or below will sound the partial of their semitone difference (eg, an F4 above C4 will sound the 5th partial, ie, E). Use like poly.
 - **pop~** - makes an electronic-ey pop sound.
+- **quiet-param~** - temporarily mute a signal to quietly change a parameter which can't be interpolated at signal rate.
 - **rand-range** - outputs a random int between two argument ints. Bang for a new number.
 - **some-edo** - outputs a new frequency which is a random interval above or below the previous freq using a given Equal Division of the Octave and octave size.
 - **some-harmonic** - outputs a new frequency which is a random integer multiple of the input frequency (or the last output frequency), wrapped to be lower than a given frequency. `$1`: wrap point and start frequency if none specified. `$2`: lower harmonic limit. `$3`: upper harmonic limit.
