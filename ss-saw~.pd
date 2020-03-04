@@ -1,13 +1,11 @@
-#N canvas 779 264 466 350 12;
+#N canvas 1307 178 466 350 12;
 #X obj 306 10 table \$0-waveform;
-#N canvas 1249 249 509 430 build-table 0;
+#N canvas 1296 564 509 430 build-table 1;
 #X obj 160 -37 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 160 61 until;
 #X obj 160 119 expr 1 / ($f1 + 1);
-#X obj 160 148 list prepend sinesum 2051;
 #X obj 160 177 list trim;
-#X msg 332 115 sinesum 2051;
 #X obj 160 3 t b b;
 #X obj 135 206 list;
 #X obj 135 235 list trim;
@@ -21,37 +19,36 @@
 #X obj 100 127 - 1;
 #X text 11 -83 generate the table data;
 #X obj 68 -38 t b f;
-#X connect 0 0 6 0;
-#X connect 1 0 10 0;
-#X connect 2 0 3 0;
-#X connect 3 0 4 0;
-#X connect 4 0 3 1;
-#X connect 4 0 7 1;
-#X connect 5 0 3 1;
-#X connect 6 0 9 0;
-#X connect 6 1 5 0;
-#X connect 7 0 8 0;
-#X connect 8 0 12 0;
-#X connect 9 0 1 0;
-#X connect 10 0 2 0;
-#X connect 10 0 11 0;
-#X connect 11 0 14 0;
-#X connect 13 0 12 0;
-#X connect 14 0 13 0;
-#X connect 14 1 7 0;
-#X connect 15 0 18 0;
-#X connect 16 0 11 1;
-#X connect 18 0 6 0;
-#X connect 18 1 9 1;
-#X connect 18 1 10 1;
-#X connect 18 1 16 0;
+#X msg 332 115 sinesum 2048;
+#X obj 160 148 list prepend sinesum 2048;
+#X connect 0 0 4 0;
+#X connect 1 0 8 0;
+#X connect 2 0 18 0;
+#X connect 3 0 5 1;
+#X connect 3 0 18 1;
+#X connect 4 0 7 0;
+#X connect 4 1 17 0;
+#X connect 5 0 6 0;
+#X connect 6 0 10 0;
+#X connect 7 0 1 0;
+#X connect 8 0 2 0;
+#X connect 8 0 9 0;
+#X connect 9 0 12 0;
+#X connect 11 0 10 0;
+#X connect 12 0 11 0;
+#X connect 12 1 5 0;
+#X connect 13 0 16 0;
+#X connect 14 0 9 1;
+#X connect 16 0 4 0;
+#X connect 16 1 7 1;
+#X connect 16 1 8 1;
+#X connect 16 1 14 0;
+#X connect 17 0 18 1;
+#X connect 18 0 3 0;
 #X restore 306 39 pd build-table;
 #X obj 306 97 f \$2;
 #X obj 306 126 s \$0-harmonics;
-#X obj 6 172 phasor~ \$1;
-#X obj 6 197 *~ 2051;
-#X obj 6 222 tabread4~ \$0-waveform;
-#X obj 6 247 outlet~;
+#X obj 6 231 outlet~;
 #X text 6 10 sinesum sawtooth wavemade of an arbitrary number of harmonicsargs:1
 - freq (hz)2 - number of harmonicshttp://write.flossmanuals.net/pure-data/generating-waveforms/
 , f 41;
@@ -59,11 +56,10 @@
 #X obj 306 68 initbang;
 #X obj 378 68 inlet;
 #X obj 378 97 int;
+#X obj 6 189 tabosc4~ \$0-waveform;
 #X connect 2 0 3 0;
-#X connect 4 0 5 0;
-#X connect 5 0 6 0;
-#X connect 6 0 7 0;
-#X connect 9 0 4 0;
-#X connect 10 0 2 0;
-#X connect 11 0 12 0;
-#X connect 12 0 3 0;
+#X connect 6 0 10 0;
+#X connect 7 0 2 0;
+#X connect 8 0 9 0;
+#X connect 9 0 3 0;
+#X connect 10 0 4 0;

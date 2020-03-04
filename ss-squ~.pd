@@ -1,12 +1,10 @@
-#N canvas 1355 184 466 350 12;
+#N canvas 1290 308 466 373 12;
 #X obj 307 15 table \$0-waveform;
-#N canvas 1200 372 509 453 build-table 0;
+#N canvas 977 501 509 476 build-table 0;
 #X obj 160 -37 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 160 61 until;
-#X obj 160 178 list prepend sinesum 2051;
 #X obj 160 207 list trim;
-#X msg 332 115 sinesum 2051;
 #X obj 160 3 t b b;
 #X obj 135 236 list;
 #X obj 135 265 list trim;
@@ -24,50 +22,48 @@
 #X obj 160 149 expr ($f1 % 2) * (1 / $f1), f 27;
 #X text 224 -72 the math:- even harmonics are 0- odd harmonics are
 1 / f;
-#X connect 0 0 5 0;
-#X connect 1 0 9 0;
-#X connect 2 0 3 0;
-#X connect 3 0 2 1;
-#X connect 3 0 6 1;
-#X connect 4 0 2 1;
-#X connect 5 0 8 0;
-#X connect 5 1 4 0;
-#X connect 6 0 7 0;
-#X connect 7 0 11 0;
-#X connect 8 0 1 0;
-#X connect 9 0 10 0;
-#X connect 9 0 18 0;
-#X connect 10 0 13 0;
-#X connect 12 0 11 0;
-#X connect 13 0 12 0;
-#X connect 13 1 6 0;
-#X connect 14 0 17 0;
-#X connect 15 0 10 1;
-#X connect 17 0 5 0;
-#X connect 17 1 8 1;
-#X connect 17 1 9 1;
-#X connect 17 1 15 0;
-#X connect 18 0 19 0;
-#X connect 19 0 2 0;
+#X msg 332 115 sinesum 2048;
+#X obj 160 178 list prepend sinesum 2048;
+#X connect 0 0 3 0;
+#X connect 1 0 7 0;
+#X connect 2 0 4 1;
+#X connect 2 0 20 1;
+#X connect 3 0 6 0;
+#X connect 3 1 19 0;
+#X connect 4 0 5 0;
+#X connect 5 0 9 0;
+#X connect 6 0 1 0;
+#X connect 7 0 8 0;
+#X connect 7 0 16 0;
+#X connect 8 0 11 0;
+#X connect 10 0 9 0;
+#X connect 11 0 10 0;
+#X connect 11 1 4 0;
+#X connect 12 0 15 0;
+#X connect 13 0 8 1;
+#X connect 15 0 3 0;
+#X connect 15 1 6 1;
+#X connect 15 1 7 1;
+#X connect 15 1 13 0;
+#X connect 16 0 17 0;
+#X connect 17 0 20 0;
+#X connect 19 0 20 1;
+#X connect 20 0 2 0;
 #X restore 307 44 pd build-table;
 #X obj 307 102 f \$2;
 #X obj 307 131 s \$0-harmonics;
 #X text 6 10 sinesum square wavemade of an arbitrary number of harmonicsargs:1
 - freq (hz)2 - number of harmonics http://write.flossmanuals.net/pure-data/generating-waveforms/
 , f 41;
-#X obj 6 188 phasor~ \$1;
-#X obj 6 213 *~ 2051;
-#X obj 6 238 tabread4~ \$0-waveform;
-#X obj 6 263 outlet~;
+#X obj 6 221 outlet~;
 #X obj 6 163 inlet~;
 #X obj 307 73 initbang;
 #X obj 375 73 inlet;
 #X obj 375 102 int;
+#X obj 6 192 tabosc4~ \$0-waveform;
 #X connect 2 0 3 0;
-#X connect 5 0 6 0;
-#X connect 6 0 7 0;
-#X connect 7 0 8 0;
-#X connect 9 0 5 0;
-#X connect 10 0 2 0;
-#X connect 11 0 12 0;
-#X connect 12 0 3 0;
+#X connect 6 0 10 0;
+#X connect 7 0 2 0;
+#X connect 8 0 9 0;
+#X connect 9 0 3 0;
+#X connect 10 0 5 0;
