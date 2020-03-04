@@ -15,6 +15,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable.
 - **cc** - MIDI continuous controller input with CC number and channel learn. Open the toggle to begin learn, and close to select the last used controller. Output is scaled from zero - first-argument. Second argment can be used to set the initial controller number, third is initial channel (if unset all channels are used). Right outputs send CC number and channel number when exiting learn mode.
 - **cc-b** - like `cc` but sends a bang for values above zero. Useful for buttons. Arguments can be used to set initial controller number and channel.
 - **cc-t** - like `cc-b` but alternately sends `1` and `0`. Useful for buttons masquerading as toggles. Argument can be used to set initial controller number and channel.
+- **fold~** - simple wave folder. Folds amplitudes greater than 1. Uses `[compressor~]` external under the hood.
 - **intuos-pen** - abstraction for simpler use of Wacom Intuos Pen Small (model CTH-480). Uses [hid] under the hood. Does things like normalize output values to 0-1 and simplify the messages (check the patch for details). Only handles pen, not touch or tablet buttons. Won't work with anything but the exact model, modify for your device if you like.
 - **lfo~** - a quick-and-dirty oscillator between two values. Oscillates between `$2` and `$3` at `$1`hz.
 - **line-eased~** - generates a ramp with a sinusoidal ease-in-out curve. Same API as `line~` but ignores `stop` messages.
