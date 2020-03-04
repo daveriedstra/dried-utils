@@ -23,6 +23,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable.
 - **pan~** - drop-in replacement for `pan` but using signal as right input for smoother panning changes
 - **partial-counter** - start at 1, bang left for up, mid for down, right to reset, below zero is a fraction.
 - **partial-poly** - allows simple access to just tuned partials with midi keyboard. Held pitch is root, pitches above or below will sound the partial of their semitone difference (eg, an F4 above C4 will sound the 5th partial, ie, E). Use like poly.
+- **pool** - pure data implementation of [Pool Time's](https://gitlab.com/pool-time/pool-time) Pool class. _(TODO - documentation)_
 - **pop~** - makes an electronic-ey pop sound.
 - **quiet-param~** - temporarily mute a signal to quietly change a parameter which can't be interpolated at signal rate.
 - **rand-range** - outputs a random int between two argument ints. Bang for a new number.
