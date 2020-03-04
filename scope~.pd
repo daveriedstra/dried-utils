@@ -1,0 +1,130 @@
+#N canvas 541 310 818 747 12;
+#X obj 114 210 tabwrite~ \$0-buff;
+#X obj 687 491 table \$0-buff;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array \$0-display 4096 float 0 black black;
+#X coords 0 1 4095 -1 600 300 1;
+#X restore 29 368 graph;
+#N canvas 1252 502 641 546 concat 0;
+#X obj 183 1 inlet;
+#X obj 183 30 t b b b;
+#X obj 39 152 until;
+#X obj 39 241 count;
+#X obj 39 320 moses;
+#X obj 39 409 tabread \$0-display;
+#X obj 39 468 tabwrite \$0-display;
+#X obj 179 409 tabread \$0-buff;
+#X msg 48 213 reset;
+#X obj 227 174 - 256;
+#X obj 183 120 f \$1;
+#X obj 307 120 f \$2;
+#X obj 332 92 r \$0-buff-size;
+#X obj 208 89 r \$0-disp-size;
+#X obj 229 56 s \$0-reset;
+#X obj 48 185 r \$0-reset;
+#X obj 49 270 s \$0-index;
+#X obj 169 439 r \$0-index;
+#X text 22 118 count indices;
+#X obj 39 379 +;
+#X obj 179 381 -;
+#X text 83 320 shift disp array back by buffsize \, then add buffer
+;
+#X connect 0 0 1 0;
+#X connect 1 0 10 0;
+#X connect 1 1 11 0;
+#X connect 1 2 14 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 0 16 0;
+#X connect 4 0 19 0;
+#X connect 4 1 20 0;
+#X connect 5 0 6 0;
+#X connect 7 0 6 0;
+#X connect 8 0 3 0;
+#X connect 9 0 4 1;
+#X connect 9 0 20 1;
+#X connect 10 0 9 0;
+#X connect 10 0 2 0;
+#X connect 10 0 3 1;
+#X connect 11 0 9 1;
+#X connect 11 0 19 1;
+#X connect 12 0 11 1;
+#X connect 13 0 10 1;
+#X connect 15 0 8 0;
+#X connect 17 0 6 1;
+#X connect 19 0 5 0;
+#X connect 20 0 7 0;
+#X restore 45 210 pd concat;
+#X obj 408 159 s \$0-buff-size;
+#X obj 282 156 s \$0-disp-size;
+#X obj 45 173 t b b;
+#X obj 89 118 tgl 15 0 empty \$0-power empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg 396 189 resize \$1;
+#X obj 396 218 s \$0-buff;
+#X msg 261 183 resize \$1;
+#X obj 261 212 s \$0-display;
+#X obj 114 144 inlet~;
+#X obj 609 349 tgl 15 0 \$0-power empty power -33 5 0 10 -262144 -1
+-1 1 1;
+#X obj 45 115 bang~;
+#X obj 45 144 spigot;
+#X obj 575 165 block~ 2048 1 0.5;
+#X obj 283 128 * 12;
+#X floatatom 283 8 5 0 0 0 - #0-zoom -, f 5;
+#X obj 283 37 int;
+#X obj 283 95 t b f;
+#X obj 221 349 hsl 128 15 16 1 0 0 \$0-zoom empty zoom 0 -8 0 10 -262144
+-1 -1 6773 1;
+#X obj 376 349 hsl 128 15 6 16 0 0 \$0-refresh empty interval\ &\ block\ size
+0 -8 0 10 -262144 -1 -1 3810 1;
+#X floatatom 397 8 5 0 0 0 - #0-refresh -, f 5;
+#X text 477 30 refresh interval;
+#X text 242 37 zoom;
+#X obj 552 308 initbang;
+#X obj 552 349 bng 15 250 50 0 empty empty reset -33 5 0 10 -262144
+-1 -1;
+#X msg 250 302 8;
+#X msg 355 302 9;
+#X text 406 267 careful! certain combinations of zoom & intervalcan
+really stress the CPU and affect the audio!;
+#X obj 653 416 s \$0-display;
+#X msg 653 387 const 0;
+#X obj 283 65 change;
+#X obj 397 37 int;
+#X obj 397 65 change;
+#X obj 397 95 expr pow(2 \, $f1);
+#X text 623 21 TODO:still artifacts at the joins...decouple interval
+\, block size \, and zoom;
+#X msg 575 136 set \$1 1 0.25;
+#X connect 6 0 3 0;
+#X connect 6 1 0 0;
+#X connect 7 0 15 1;
+#X connect 8 0 9 0;
+#X connect 10 0 11 0;
+#X connect 12 0 0 0;
+#X connect 14 0 15 0;
+#X connect 15 0 6 0;
+#X connect 17 0 5 0;
+#X connect 17 0 10 0;
+#X connect 18 0 19 0;
+#X connect 19 0 33 0;
+#X connect 20 0 17 0;
+#X connect 20 1 17 1;
+#X connect 23 0 34 0;
+#X connect 26 0 27 0;
+#X connect 27 0 29 0;
+#X connect 27 0 28 0;
+#X connect 27 0 32 0;
+#X connect 28 0 21 0;
+#X connect 29 0 22 0;
+#X connect 32 0 31 0;
+#X connect 33 0 20 0;
+#X connect 34 0 35 0;
+#X connect 35 0 36 0;
+#X connect 36 0 38 0;
+#X connect 36 0 4 0;
+#X connect 36 0 8 0;
+#X connect 36 0 17 0;
+#X connect 38 0 16 0;
+#X coords 0 -1 1 1 620 350 1 19 330;

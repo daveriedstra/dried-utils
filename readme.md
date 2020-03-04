@@ -25,6 +25,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable.
 - **pop~** - makes an electronic-ey pop sound.
 - **quiet-param~** - temporarily mute a signal to quietly change a parameter which can't be interpolated at signal rate.
 - **rand-range** - outputs a random int between two argument ints. Bang for a new number.
+- **scope~** - a scope that animates like a traditional scope app. Needs refinement but useful for many applications. Some zoom settings might affect performance.
 - **some-edo** - outputs a new frequency which is a random interval above or below the previous freq using a given Equal Division of the Octave and octave size.
 - **some-harmonic** - outputs a new frequency which is a random integer multiple of the input frequency (or the last output frequency), wrapped to be lower than a given frequency. `$1`: wrap point and start frequency if none specified. `$2`: lower harmonic limit. `$3`: upper harmonic limit.
 - **some-subharmonic** - like `some-harmonic` but with subharmonics.
