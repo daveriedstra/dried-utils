@@ -19,6 +19,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable.
 - **intuos-pen** - abstraction for simpler use of Wacom Intuos Pen Small (model CTH-480). Uses [hid] under the hood. Does things like normalize output values to 0-1 and simplify the messages (check the patch for details). Only handles pen, not touch or tablet buttons. Won't work with anything but the exact model, modify for your device if you like.
 - **lfo~** - a quick-and-dirty oscillator between two values. Oscillates between `$2` and `$3` at `$1`hz.
 - **line-eased~** - generates a ramp with a sinusoidal ease-in-out curve. Same API as `line~` but ignores `stop` messages.
+- **line-bezier~** - like `line-eased~`, generates an eased-in-out ramp using the cubic bezier function, but tries to smooth out corners when the ramp is interrupted.
 - **nano-strip** - simple gui for a single control strip on the Korg nanoKontrol 2. Argument is the lane number from 0 - 7, slider and knob scaled to 0 - 1, buttons output bangs.
 - **nano-transport** - simple gui for the transport, track, & marker controls on the Korg nanoKontrol 2.
 - **pan~** - drop-in replacement for `pan` but using signal as right input for smoother panning changes
