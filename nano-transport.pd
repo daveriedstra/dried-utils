@@ -1,10 +1,10 @@
-#N canvas 168 332 629 532 12;
+#N canvas 168 371 629 532 12;
 #N canvas 841 300 763 459 routing 0;
 #X obj 60 16 ctlin, f 10;
 #X obj 60 45 pack f f f;
 #X msg 60 74 \$3 \$2 \$1;
 #X obj 60 103 route 1;
-#X text 128 103 channel route;
+#X text 130 103 channel route;
 #X obj 60 248 s \$0-track-prev;
 #X obj 60 190 route 58;
 #X obj 179 190 route 59;
@@ -38,10 +38,13 @@
 #X obj 325 370 s \$0-trans-stop;
 #X obj 444 370 s \$0-trans-play;
 #X obj 563 370 s \$0-trans-rec;
+#X obj 130 74 ctlout;
+#X text 182 74 << lights support;
 #X connect 0 0 1 0;
 #X connect 0 1 1 1;
 #X connect 0 2 1 2;
 #X connect 1 0 2 0;
+#X connect 1 0 38 0;
 #X connect 2 0 3 0;
 #X connect 3 0 6 0;
 #X connect 3 0 7 0;
