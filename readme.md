@@ -20,7 +20,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable.
 - **lfo~** - a quick-and-dirty oscillator between two values. Oscillates between `$2` and `$3` at `$1`hz.
 - **line-eased~** - generates a ramp with a sinusoidal ease-in-out curve. Same API as `line~` but ignores `stop` messages.
 - **line-bezier~** - like `line-eased~`, generates an eased-in-out ramp using the cubic bezier function, but tries to smooth out corners when the ramp is interrupted.
-- **nano-strip** - simple gui for a single control strip on the Korg nanoKontrol 2. Argument is the lane number from 0 - 7, slider and knob scaled to 0 - 1, buttons output bangs.
+- **nano-strip** - simple gui for a single control strip on the Korg nanoKontrol 2. First argument is the lane number from 0 - 7, second argument is 0 for button mode (default) or 1 for toggle mode (affects buttons only). Slider and knob are scaled to 0 - 1, buttons output bangs in button mode or 1 / 0 in toggle mode.
 - **nano-transport** - simple gui for the transport, track, & marker controls on the Korg nanoKontrol 2.
 - **pan~** - drop-in replacement for `pan` but using signal as right input for smoother panning changes
 - **partial-counter** - start at 1, bang left for up, mid for down, right to reset, below zero is a fraction.
