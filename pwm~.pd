@@ -1,0 +1,24 @@
+#N canvas 1056 311 605 443 12;
+#X obj 20 40 inlet~;
+#X obj 20 99 expr~ if($v1 < ($f2 / ($f2 + $f3)) \, $v1 * ($f2 + $f3)
+/ $f2 / 2 \, (($v1 - ($f2 / ($f2 + $f3))) * ($f2 + $f3) / $f3 / 2)
++ 0.5);
+#X obj 20 160 outlet~;
+#X obj 228 40 inlet;
+#X obj 437 40 inlet;
+#X obj 303 10 loadbang;
+#X msg 303 39 1;
+#X obj 228 69 select 0;
+#X obj 437 69 select 0;
+#X text 18 214 pwm~: send a phasor~ 0-1 through this and ratio sides
+to the inlets to get a pwm scaled output of the phasor. Useful for
+driving sin~ or maybe a wavetable;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 3 0 7 0;
+#X connect 4 0 8 0;
+#X connect 5 0 6 0;
+#X connect 6 0 1 1;
+#X connect 6 0 1 2;
+#X connect 7 1 1 1;
+#X connect 8 1 1 2;
