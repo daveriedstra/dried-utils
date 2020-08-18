@@ -1,15 +1,11 @@
-#N canvas 1106 332 450 300 12;
+#N canvas 1093 321 450 300 12;
 #X obj 22 22 inlet~;
 #X obj 22 51 pong~ 0 -1 1;
-#X obj 22 138 compressor~;
 #X obj 22 167 outlet~;
 #X text 155 20 simple wave folderfolds amplitudes greater than 1(mostly
 as a pnemonic for myself);
-#X obj 96 80 loadbang;
-#X msg 96 109 1;
-#X text 111 138 keep the edges curved;
+#X text 161 138 keep the edges curved;
+#X obj 22 138 dried/round-clip~ 3;
 #X connect 0 0 1 0;
-#X connect 1 0 2 0;
-#X connect 2 0 3 0;
-#X connect 5 0 6 0;
-#X connect 6 0 2 1;
+#X connect 1 0 5 0;
+#X connect 5 0 2 0;
