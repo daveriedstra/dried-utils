@@ -1,4 +1,4 @@
-#N canvas 719 309 753 456 12;
+#N canvas 719 348 753 456 12;
 #X obj 36 42 inlet~;
 #X obj 150 42 inlet;
 #X obj 36 391 outlet~;
@@ -9,11 +9,11 @@
 #X msg 150 259 0 \$1;
 #X text 228 194 V A D S;
 #X text 132 171 R;
-#X text 352 170 sustain is rel to vol (ie S * V);
+#X text 352 200 sustain is rel to vol (ie S * V);
 #X text 362 13 Vol A D S R;
-#X obj 234 170 f 7;
-#X obj 266 169 f 50;
-#X obj 298 170 * 0.8;
+#X obj 234 171 f 7;
+#X obj 266 171 f 50;
+#X obj 298 171 * 0.8;
 #X obj 362 42 inlet;
 #X obj 150 101 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -28,6 +28,8 @@
 #X obj 36 361 *~;
 #X text 23 12 signal to env;
 #X text 147 13 velocity;
+#X obj 362 171 f 1;
+#X obj 307 134 loadbang;
 #X connect 0 0 25 0;
 #X connect 1 0 4 0;
 #X connect 3 0 21 0;
@@ -46,12 +48,17 @@
 #X connect 18 0 3 0;
 #X connect 20 0 12 0;
 #X connect 20 0 13 0;
+#X connect 20 0 28 0;
 #X connect 21 0 25 1;
 #X connect 22 0 23 0;
 #X connect 23 0 21 1;
-#X connect 24 0 22 0;
+#X connect 24 0 28 0;
 #X connect 24 1 12 0;
 #X connect 24 2 13 0;
 #X connect 24 3 14 1;
 #X connect 24 4 17 1;
 #X connect 25 0 2 0;
+#X connect 28 0 22 0;
+#X connect 29 0 12 0;
+#X connect 29 0 13 0;
+#X connect 29 0 28 0;
