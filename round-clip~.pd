@@ -1,0 +1,26 @@
+#N canvas 994 223 804 414 12;
+#X obj 195 102 expr 1 - (1/$f1);
+#X obj 22 35 inlet~;
+#X obj 165 17 inlet;
+#X text 314 13 like tanh~ but with configurable roundness (1-n);
+#X obj 214 17 ii \$1;
+#X text 297 145 1: split into 3 chunks (lower curve \, linear \, upper
+curve);
+#X text 430 223 2: do curving;
+#X text 332 330 3: reassemble;
+#X obj 165 42 f;
+#X obj 23 374 outlet~;
+#X obj 165 71 max 0.0001;
+#X obj 23 192 expr~ if($v1 < $f3 * -1 \, (tanh($f2 * ($v1 + $f3)) /
+$f2 - $f3) \, 0) \; if($v1 >= $f3 * -1 && $v1 <= $f3 \, $v1 \, 0) \;
+if($v1 > $f3 \, (tanh($f2 * ($v1 - $f3)) / $f2 + $f3) \, 0);
+#X connect 0 0 11 2;
+#X connect 1 0 11 0;
+#X connect 2 0 8 0;
+#X connect 4 0 8 0;
+#X connect 8 0 10 0;
+#X connect 10 0 0 0;
+#X connect 10 0 11 1;
+#X connect 11 0 9 0;
+#X connect 11 1 9 0;
+#X connect 11 2 9 0;
