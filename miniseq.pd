@@ -1,34 +1,34 @@
-#N canvas 109 365 710 499 12;
+#N canvas 124 258 730 593 12;
 #X obj 143 216 + 1;
 #X obj 111 245 % 8;
-#X obj 111 304 hradio 15 1 0 8 empty empty empty 0 -8 0 10 #fcfcfc
-#000000 #000000 7;
-#X obj 81 358 route 0 1 2 3 4 5 6 7;
-#X obj 81 389 spigot;
-#X obj 111 319 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 111 332 hradio 15 1 0 8 empty empty empty 0 -8 0 10 #fcfcfc
+#000000 #000000 4;
+#X obj 81 386 route 0 1 2 3 4 5 6 7;
+#X obj 81 417 spigot;
+#X obj 111 347 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 129 389 spigot;
-#X obj 126 319 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 129 417 spigot;
+#X obj 126 347 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 177 389 spigot;
-#X obj 141 319 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 177 417 spigot;
+#X obj 141 347 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 225 389 spigot;
-#X obj 156 319 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 225 417 spigot;
+#X obj 156 347 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 273 389 spigot;
-#X obj 171 319 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 273 417 spigot;
+#X obj 171 347 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 321 389 spigot;
-#X obj 186 319 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 321 417 spigot;
+#X obj 186 347 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 369 389 spigot;
-#X obj 201 319 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 369 417 spigot;
+#X obj 201 347 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 417 389 spigot;
-#X obj 216 319 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 417 417 spigot;
+#X obj 216 347 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 81 448 outlet;
+#X obj 81 476 outlet;
 #X obj 44 9 inlet;
 #X obj 171 9 inlet;
 #X text 286 148 miniseq - quick & dirty sequencer;
@@ -66,7 +66,7 @@
 #X connect 13 1 7 0;
 #X connect 14 0 15 0;
 #X connect 15 0 13 1;
-#X restore 111 275 pd once-thru-logic;
+#X restore 111 303 pd once-thru-logic;
 #X obj 76 97 s \$0-once-thru-start;
 #X obj 76 126 r \$0-once-thru-end;
 #X obj 111 216 f 0;
@@ -77,33 +77,46 @@
 #X text 286 206 2nd inlet: to metro's right inlet;
 #X text 286 235 3rd inlet: # steps (1-8);
 #X obj 220 9 inlet;
-#N canvas 730 313 450 325 steps 0;
-#X obj 42 24 inlet;
-#X obj 42 53 min 8;
-#X obj 42 82 max 1;
-#X obj 42 111 s \$0-steps;
+#N canvas 730 342 450 325 steps 0;
+#X obj 22 24 inlet;
+#X obj 22 53 min 8;
+#X obj 22 82 max 1;
+#X obj 22 111 s \$0-steps;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
 #X restore 220 38 pd steps;
 #X obj 143 245 r \$0-steps;
-#X obj 571 305 outlet;
-#X text 530 330 for routing by number;
-#X text 530 359 or for sync;
-#X msg 81 418 0;
-#X msg 129 418 1;
-#X msg 177 418 2;
-#X msg 225 418 3;
-#X msg 273 418 4;
-#X msg 321 418 5;
-#X msg 369 418 6;
-#X msg 417 418 7;
+#X obj 571 333 outlet;
+#X text 530 358 for routing by number;
+#X text 530 387 or for sync;
+#X msg 81 446 0;
+#X msg 129 446 1;
+#X msg 177 446 2;
+#X msg 225 446 3;
+#X msg 273 446 4;
+#X msg 321 446 5;
+#X msg 369 446 6;
+#X msg 417 446 7;
 #X obj 44 38 route bang float;
 #X obj 111 68 t f b;
 #X obj 111 187 metro;
+#X obj 143 274 r \$0-start-step;
+#X obj 290 9 inlet;
+#N canvas 730 313 450 325 start-step 0;
+#X obj 22 24 inlet;
+#X obj 22 111 s \$0-start-step;
+#X obj 22 82 max 0;
+#X obj 22 53 min 7;
+#X connect 0 0 3 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 0;
+#X restore 290 38 pd start-step;
+#X obj 111 274 + 0;
+#X text 286 264 4rd inlet: start index (0-7);
 #X connect 0 0 28 1;
 #X connect 1 0 0 0;
-#X connect 1 0 25 0;
+#X connect 1 0 54 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 3 1 6 0;
@@ -155,4 +168,7 @@
 #X connect 49 0 50 0;
 #X connect 49 1 30 0;
 #X connect 50 0 28 0;
-#X coords 0 -1 1 1 122 32 1 110 303;
+#X connect 51 0 54 1;
+#X connect 52 0 53 0;
+#X connect 54 0 25 0;
+#X coords 0 -1 1 1 122 32 1 110 331;
