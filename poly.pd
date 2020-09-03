@@ -1,0 +1,16 @@
+#N canvas 1030 349 450 300 12;
+#X obj 13 72 - 1;
+#X obj 13 101 pack f f f;
+#X obj 13 14 inlet;
+#X obj 13 130 outlet;
+#X obj 59 13 inlet;
+#X text 13 171 just a shorthand to get a poly that works better with
+clone;
+#X obj 13 43 poly \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 2 0 6 0;
+#X connect 4 0 6 1;
+#X connect 6 0 0 0;
+#X connect 6 1 1 1;
+#X connect 6 2 1 2;

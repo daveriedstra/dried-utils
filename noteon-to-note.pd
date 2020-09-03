@@ -1,0 +1,18 @@
+#N canvas 663 489 450 300 12;
+#X obj 9 17 inlet;
+#X obj 73 17 inlet;
+#X obj 137 17 inlet;
+#X obj 9 135 outlet;
+#X text 9 169 noteon-to-note: quick-n-dirty send pitch/value/duration
+triplets and have them converted to the appropriate note-on / note-off
+sequences;
+#X msg 39 104 \$1 0;
+#X obj 9 46 pack f f \$1;
+#X obj 39 75 pipe f f 200;
+#X connect 0 0 6 0;
+#X connect 1 0 6 1;
+#X connect 2 0 6 2;
+#X connect 5 0 3 0;
+#X connect 6 0 3 0;
+#X connect 6 0 7 0;
+#X connect 7 0 5 0;
