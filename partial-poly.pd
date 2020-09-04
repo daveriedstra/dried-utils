@@ -1,12 +1,11 @@
 #N canvas 605 106 733 380 12;
-#N canvas 563 427 586 508 relative 0;
+#N canvas 550 416 586 508 relative 1;
 #X obj 134 24 inlet;
 #X obj 209 22 inlet;
 #X obj 134 294 outlet;
 #X obj 271 294 outlet;
 #X obj 134 53 pack f f;
 #X obj 134 82 t l l;
-#X obj 95 234 gate 2;
 #X obj 166 151 expr if (_\$0_base == 0 || $f1 == _\$0_base || (_\$0_gate
 == 1 && _\$0_prev_gate == 2) \, 1 \, 2), f 48;
 #N canvas 580 429 450 323 store-gate-state 0;
@@ -73,7 +72,7 @@ gate;
 #X connect 15 1 16 0;
 #X connect 18 0 3 0;
 #X connect 19 0 18 0;
-#X restore 43 264 pd set-root;
+#X restore 39 264 pd set-root;
 #X text 199 77 when a noteon comes in \, open the gate and save the
 pitch.pass all other pitchesuntil the first pitch's noteoff.;
 #N canvas 1237 416 450 323 make-partial-note 0;
@@ -98,17 +97,18 @@ pitch.pass all other pitchesuntil the first pitch's noteoff.;
 #X connect 7 0 2 0;
 #X connect 8 0 3 1;
 #X restore 134 264 pd make-partial-note;
+#X obj 39 234 cyclone/gate 2;
 #X connect 0 0 4 0;
 #X connect 1 0 4 1;
 #X connect 4 0 5 0;
-#X connect 5 0 6 1;
-#X connect 5 1 7 0;
-#X connect 6 0 9 0;
-#X connect 6 1 11 0;
-#X connect 7 0 6 0;
-#X connect 7 0 8 0;
-#X connect 11 0 2 0;
-#X connect 11 1 3 0;
+#X connect 5 0 11 1;
+#X connect 5 1 6 0;
+#X connect 6 0 7 0;
+#X connect 6 0 11 0;
+#X connect 10 0 2 0;
+#X connect 10 1 3 0;
+#X connect 11 0 8 0;
+#X connect 11 1 10 0;
 #X restore 141 78 pd relative;
 #X msg 23 142 stop;
 #X obj 33 112 r \$0-panic;
