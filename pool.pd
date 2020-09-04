@@ -1,4 +1,4 @@
-#N canvas 1098 108 413 246 12;
+#N canvas 619 194 413 246 12;
 #X obj 28 -27 inlet;
 #X obj 28 93 outlet;
 #X text 28 -64 pool;
@@ -61,13 +61,12 @@
 #X connect 5 0 2 2;
 #X restore 178 35 pd set-bang-count;
 #X obj 178 9 r \$0-start;
-#N canvas 1109 577 450 300 bangs 0;
+#N canvas 474 419 450 300 bangs 0;
 #X obj 89 16 inlet;
 #X obj 89 248 outlet;
 #X obj 89 131 t b b;
 #X obj 89 190 pipe;
 #X obj 117 72 r \$0-bang-count;
-#X obj 89 102 Uzi;
 #X obj 89 45 t b f;
 #X obj 121 160 dried/rand-range 0;
 #X obj 89 219 bang;
@@ -75,18 +74,19 @@
 #X msg 12 74 pause;
 #X text 150 11 sends \$0-bang-count number of bangsat random times
 within the incomingduration;
-#X connect 0 0 6 0;
+#X obj 89 102 uzi;
+#X connect 0 0 5 0;
 #X connect 2 0 3 0;
-#X connect 2 1 7 0;
-#X connect 3 0 8 0;
-#X connect 4 0 5 1;
-#X connect 5 0 2 0;
-#X connect 6 0 5 0;
-#X connect 6 1 7 2;
-#X connect 7 0 3 1;
-#X connect 8 0 1 0;
-#X connect 9 0 10 0;
-#X connect 10 0 5 0;
+#X connect 2 1 6 0;
+#X connect 3 0 7 0;
+#X connect 4 0 11 1;
+#X connect 5 0 11 0;
+#X connect 5 1 6 2;
+#X connect 6 0 3 1;
+#X connect 7 0 1 0;
+#X connect 8 0 9 0;
+#X connect 9 0 11 0;
+#X connect 11 0 2 0;
 #X restore 28 63 pd bangs;
 #N canvas 1225 330 450 300 pool-length 0;
 #X obj 38 66 inlet;
