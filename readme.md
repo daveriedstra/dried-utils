@@ -30,7 +30,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable but probable
 - **partial-counter** - start at 1, bang left for up, mid for down, right to reset, below zero is a fraction.
 - **partial-poly** - allows simple access to just tuned partials with midi keyboard. Held pitch is root, pitches above or below will sound the partial of their semitone difference (eg, an F4 above C4 will sound the 5th partial, ie, E). Use like poly.
 - **poly** - just like vanilla `[poly]` but corrects the index to work neatly with `[clone]`.
-- **pool** - pure data implementation of [Pool Time's](https://gitlab.com/pool-time/pool-time) Pool class. _(TODO - documentation)_
+- **pool** - pure data implementation of [Pool Time's](https://gitlab.com/pool-time/pool-time) Pool class. Sends between `$3` and `$4` (or just `$3` if `$4` is omitted) bangs randomly during a pool of time which lasts between `$1` and `$2`ms. Send `bang`, "start" or "1" to start, "stop" or "0" to stop, "set loop" or "set noloop" to control whether it loops (noloop by default).
 - **pop~** - makes an electronic-ey pop sound.
 - **pwm~** - pulse-width modulated ramp. Send a `[phasor~]` 0-1 through this and ratio terms to the two right inlets to get a pwm-scaled output of the ramp (default 1:1, eg, sending `2` to the middle inlet produces a ratio of 2:1). Useful for driving `[sin~]` or some other oscillator or wavetable.
 - **quiet-param~** - temporarily mute a signal to quietly change a parameter which can't be interpolated at signal rate.
