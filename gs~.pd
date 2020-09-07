@@ -1,0 +1,29 @@
+#N canvas 565 525 450 300 12;
+#X obj 69 42 inlet~;
+#X obj 69 71 *~;
+#X obj 69 100 outlet~;
+#X obj 196 55 hsl 56 16 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 4350 1;
+#X msg 196 93 \$1 50;
+#X obj 196 122 vline~;
+#X obj 196 181 pow~ 2;
+#X obj 256 55 tgl 16 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 279 56 != 0;
+#X msg 256 93 \$1 50;
+#X obj 256 122 vline~;
+#X obj 196 151 *~;
+#X text 57 245 simple mono gainstage for graphical patches;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 3 0 4 0;
+#X connect 3 0 8 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 1 1;
+#X connect 7 0 9 0;
+#X connect 8 0 7 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 1;
+#X connect 11 0 6 0;
+#X coords 0 -1 1 1 78 40 1 195 32;

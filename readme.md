@@ -17,6 +17,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable but probable
 - **cc-t** - like `cc-b` but alternately sends `1` and `0`. Useful for buttons masquerading as toggles. Argument can be used to set initial controller number and channel.
 - **cubic-bezier~** / **quadratic-bezier~** / **quintic-bezier~** - generate one-dimensional bezier output for the given progress (signal inlet, 0-1) and control values.
 - **fold~** - simple wave folder. Folds amplitudes greater than 1.
+- **gs~** & **gs2~** - graphical gainstages / volume controls.
 - **intuos-pen** - abstraction for simpler use of Wacom Intuos Pen Small (model CTH-480). Uses [hid] under the hood. Does things like normalize output values to 0-1 and simplify the messages (check the patch for details). Only handles pen, not touch or tablet buttons. Won't work with anything but the exact model, modify for your device if you like.
 - **lfo~** - a quick-and-dirty oscillator between two values. Oscillates between `$2` and `$3` at `$1`hz.
 - **line-eased~** - generates a ramp with a sinusoidal ease-in-out curve. Same API as `line~` but ignores `stop` messages.
