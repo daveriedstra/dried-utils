@@ -32,19 +32,19 @@
 #X connect 9 0 2 0;
 #X connect 10 0 9 1;
 #X connect 12 0 5 0;
-#X restore 113 521 pd copy-to-buffer;
+#X restore 113 551 pd copy-to-buffer;
 #X msg 133 372 resize \$1;
 #X obj 21 343 * 64;
-#X obj 30 550 + 64;
-#X obj 30 579 %;
+#X obj 30 580 + 64;
+#X obj 30 609 %;
 #X obj 21 372 s \$0-buff-size;
-#X obj 63 579 r \$0-buff-size;
-#X obj 30 463 f 0;
-#X obj 30 492 t f f f;
+#X obj 63 609 r \$0-buff-size;
+#X obj 30 493 f 0;
+#X obj 30 522 t f f f;
 #X obj 155 198 s \$0-block;
 #X obj 21 226 block~;
 #X obj 21 256 r \$0-block;
-#X obj 70 550 r \$0-block;
+#X obj 70 580 r \$0-block;
 #X obj 21 285 t b f;
 #X msg 75 197 resize \$1;
 #X msg 21 197 set \$1;
@@ -63,11 +63,11 @@
 #X obj 209 20 inlet;
 #X obj 87 841 -~ 0;
 #X obj 87 928 outlet~;
-#N canvas 160 383 669 437 routing 0;
+#N canvas 249 276 669 462 routing 0;
 #X obj 19 16 inlet;
 #X obj 19 45 route float;
-#X obj 54 103 r \$0-buff-size;
-#X obj 19 132 s \$0-extra-delay-samp;
+#X obj 184 103 r \$0-buff-size;
+#X obj 149 132 s \$0-extra-delay-samp;
 #X obj 197 74 s \$0-new-block-size;
 #X obj 319 208 r \$0-block;
 #X obj 294 296 i;
@@ -79,13 +79,20 @@
 #X text 404 179 (default is 1 sec);
 #X text 404 266 snaps to block size;
 #X obj 319 237 t b f;
-#X obj 19 74 max 0;
-#X obj 19 103 min;
-#X obj 197 45 route delay block-size buffer-size sync;
-#X obj 399 74 s \$0-reset;
+#X obj 149 74 max 0;
+#X obj 149 103 min;
+#X obj 348 74 s \$0-reset;
+#X obj 197 45 route delay block-size buffer-size sync start stop;
+#X msg 428 74 1;
+#X msg 469 74 0;
+#X obj 428 103 s \$0-toggle;
+#X obj 19 74 select 0;
+#X msg 19 103 0;
+#X msg 72 103 1;
+#X obj 19 132 s \$0-toggle;
 #X connect 0 0 1 0;
-#X connect 1 0 15 0;
-#X connect 1 1 17 0;
+#X connect 1 0 22 0;
+#X connect 1 1 18 0;
 #X connect 2 0 16 1;
 #X connect 5 0 14 0;
 #X connect 6 0 8 0;
@@ -96,10 +103,18 @@
 #X connect 14 1 9 1;
 #X connect 15 0 16 0;
 #X connect 16 0 3 0;
-#X connect 17 0 15 0;
-#X connect 17 1 4 0;
-#X connect 17 2 9 0;
-#X connect 17 3 18 0;
+#X connect 18 0 15 0;
+#X connect 18 1 4 0;
+#X connect 18 2 9 0;
+#X connect 18 3 17 0;
+#X connect 18 4 19 0;
+#X connect 18 5 20 0;
+#X connect 19 0 21 0;
+#X connect 20 0 21 0;
+#X connect 22 0 23 0;
+#X connect 22 1 24 0;
+#X connect 23 0 25 0;
+#X connect 24 0 25 0;
 #X restore 209 49 pd routing;
 #X obj 21 169 r \$0-new-block-size;
 #X obj 21 314 5;
@@ -118,7 +133,7 @@ simple concept. Constantly records audio to a buffer (outside this
 abstraction) and reports where it's recording to \, looping at the
 edge of the buffer. Designed so you can plug it right in to tabread4~
 and hear a delay without clicks.;
-#X text 354 479 implementation details:every cycle / block \, the
+#X text 354 489 implementation details:every cycle / block \, the
 inlet data is written to a table (\$0-tab) the size of one block \,
 then copied to the "real" buffer (\$1) at the record head point. This
 value is reported \, then incremented.;
@@ -134,13 +149,16 @@ the block duration. Add additional delay and modulo at the buffer boundary.
 #X obj 241 664 loadbang;
 #X obj 161 722 expr $f2 * 1000 / $f1;
 #X obj 108 434 r \$0-reset;
+#X obj 30 463 spigot 1;
+#X obj 100 463 r \$0-toggle;
 #X text 354 214 right inlet: control- `block-size \$1` - set how many
 samples are computed each block- `buffer-size \$1` - set how many
 samples the buffer can hold (snapped to a multiple of block-size \,
-rounded down)- float or `delay \$1` - add additional delay to output
-(samples)- sync - reset rec-head to 0;
+rounded down)- `delay \$1` - add additional delay to output (samples)-
+sync - reset rec-head to 0- 1/0 or start/stop - start or stop recording
+;
 #X connect 0 0 46 0;
-#X connect 1 0 9 0;
+#X connect 1 0 54 0;
 #X connect 3 0 47 0;
 #X connect 4 0 3 0;
 #X connect 4 0 7 0;
@@ -186,3 +204,5 @@ rounded down)- float or `delay \$1` - add additional delay to output
 #X connect 51 0 50 0;
 #X connect 52 0 21 2;
 #X connect 53 0 18 0;
+#X connect 54 0 9 0;
+#X connect 55 0 54 1;
