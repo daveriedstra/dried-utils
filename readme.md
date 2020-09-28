@@ -19,6 +19,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable but probable
 - **cubic-bezier~** / **quadratic-bezier~** / **quintic-bezier~** - generate one-dimensional bezier output for the given progress (signal inlet, 0-1) and control values.
 - **fold~** - simple wave folder. Folds amplitudes greater than 1.
 - **gs~** & **gs2~** - graphical gainstages / volume controls.
+- **humanize** - add a bit of timing variation to incoming messages (lists of 1-5 floats). `$1`: window (ms), default: 50ms. `$2`: distribution (-1 to 1), default 0.5. Distribution of 0 is totally even / random, 0.5 is mostly on beat, 1 is only on beat, negatives avoid the beat. Note that `humanize` considers the beat to be half the window duration after the message is received, so on-beat messages with a window of 100ms will happen 50ms after they are received in order to enable the possibility of being ahead-of-the-beat.
 - **intuos-pen** - abstraction for simpler use of Wacom Intuos Pen Small (model CTH-480). Uses [hid] under the hood. Does things like normalize output values to 0-1 and simplify the messages (check the patch for details). Only handles pen, not touch or tablet buttons. Won't work with anything but the exact model, modify for your device if you like.
 - **lfo~** - a quick-and-dirty oscillator between two values. Oscillates between `$2` and `$3` at `$1`hz.
 - **line-eased~** - generates a ramp with a sinusoidal ease-in-out curve. Same API as `line~` but ignores `stop` messages.

@@ -1,0 +1,117 @@
+#N canvas 713 313 756 742 12;
+#X obj 25 130 t l b;
+#X obj 25 159 list trim 5;
+#X obj 25 278 pipe f f f f f 100;
+#X msg 57 241 0;
+#X obj 25 307 pack f f f f f;
+#X obj 148 157 random 200;
+#X obj 148 186 expr $f1 / 100 - 1;
+#N canvas 1089 433 450 300 distribution 0;
+#X obj 26 19 inlet;
+#X obj 160 19 inlet;
+#X obj 26 48 moses 0;
+#X obj 26 177 * -1;
+#X obj 26 206 pow 1;
+#X obj 26 235 * -1;
+#X obj 72 206 pow 1;
+#X obj 26 264 outlet;
+#X obj 160 136 moses 1;
+#X obj 206 165 pow 2;
+#X obj 160 107 + 1;
+#X obj 160 48 max -1;
+#X obj 160 77 min 1;
+#X text 293 23 distribution is tightness;
+#X text 293 52 1: maximum tightness \, always on beat;
+#X text 293 81 0.5: medium tightness \, close to beat;
+#X text 293 110 0: totally even distribution \, pure random;
+#X text 293 139 -1: inverse tightness \, avoids beat;
+#X obj 210 48 loadbang;
+#X msg 210 77 0.5;
+#X connect 0 0 2 0;
+#X connect 1 0 11 0;
+#X connect 2 0 3 0;
+#X connect 2 1 6 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 7 0;
+#X connect 6 0 7 0;
+#X connect 8 0 6 1;
+#X connect 8 0 4 1;
+#X connect 8 1 9 0;
+#X connect 9 0 6 1;
+#X connect 9 0 4 1;
+#X connect 10 0 8 0;
+#X connect 11 0 12 0;
+#X connect 12 0 10 0;
+#X connect 18 0 19 0;
+#X connect 19 0 10 0;
+#X restore 148 215 pd distribution;
+#X obj 219 244 r \$0-window;
+#N canvas 972 348 450 325 window 0;
+#X obj 35 17 inlet;
+#X obj 35 126 *;
+#X obj 35 155 +;
+#X obj 188 46 f \$1;
+#X obj 232 17 loadbang;
+#X obj 188 75 moses 1;
+#X obj 188 133 / 2;
+#X obj 35 184 outlet;
+#X obj 188 17 inlet;
+#X msg 188 104 50;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 7 0;
+#X connect 3 0 5 0;
+#X connect 4 0 3 0;
+#X connect 5 0 9 0;
+#X connect 5 1 6 0;
+#X connect 5 1 1 1;
+#X connect 6 0 2 1;
+#X connect 8 0 3 0;
+#X connect 9 0 6 0;
+#X connect 9 0 1 1;
+#X restore 148 244 pd window;
+#X obj 270 215 r \$0-distribution;
+#X obj 25 25 inlet;
+#X obj 111 25 inlet;
+#X obj 198 25 inlet;
+#X obj 25 336 outlet;
+#X obj 111 54 s \$0-window;
+#X obj 198 54 s \$0-distribution;
+#X text 25 372 humanize: introduce weighted-random time fluctuation
+into input lists;
+#X text 25 417 This patch adds some variation to timing. In order to
+so \, the beat is always considered to be half of the window duration
+later than the incoming list time. For example \, if the window is
+500ms \, all on-beat messages will be sent 250ms after they are received.
+(This needs to happen otherwise the patch can't do anything ahead of
+the beat!);
+#X text 25 571 \$2: distribution (-1 to 1) - weighting for randomness.
+1 is always on-beat \, 0.5 is mostly on beat \, 0 is fully even / random
+\, -1 avoids the beat (weighted to be near the edges of the window
+-- probably not useful). Default: 0.5;
+#X text 25 526 \$1: window duration (ms) - period of time in which
+the message may fall. Default: 50ms;
+#X connect 0 0 1 0;
+#X connect 0 1 3 0;
+#X connect 0 1 5 0;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 2 1 4 1;
+#X connect 2 2 4 2;
+#X connect 2 3 4 3;
+#X connect 2 4 4 4;
+#X connect 3 0 2 1;
+#X connect 3 0 2 2;
+#X connect 3 0 2 3;
+#X connect 3 0 2 4;
+#X connect 4 0 14 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 9 0;
+#X connect 8 0 9 1;
+#X connect 9 0 2 5;
+#X connect 10 0 7 1;
+#X connect 11 0 0 0;
+#X connect 12 0 15 0;
+#X connect 13 0 16 0;
