@@ -1,0 +1,18 @@
+#N canvas 744 418 450 300 12;
+#X obj 14 36 inlet;
+#X obj 14 65 b;
+#X obj 14 94 samplerate~;
+#X obj 14 123 outlet;
+#X obj 47 65 loadbang;
+#X obj 115 6 r pd;
+#X obj 115 35 route dsp;
+#X obj 115 65 select 1;
+#X text 16 166 dried-utils/sr - outputs samplerate on load or on DSP
+engage;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 4 0 2 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 2 0;

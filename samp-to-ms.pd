@@ -1,0 +1,9 @@
+#N canvas 950 414 450 300 12;
+#X obj 7 17 inlet;
+#X obj 7 75 outlet;
+#X text 258 14 convert samples to ms;
+#X obj 7 46 expr $f1 / $f2 * 1000;
+#X obj 151 17 ./sr;
+#X connect 0 0 3 0;
+#X connect 3 0 1 0;
+#X connect 4 0 3 1;

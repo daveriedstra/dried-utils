@@ -25,6 +25,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable but probable
 - **line-eased~** - generates a ramp with a sinusoidal ease-in-out curve. Same API as `line~` but ignores `stop` messages.
 - **line-bezier~** - like `line-eased~`, generates an eased-in-out ramp using the cubic bezier function, but tries to smooth out corners when the ramp is interrupted.
 - **miniseq** - simple graphical 8-step sequencer. Left outlet: selected steps with index; right outlet: all steps with index. Inlet 1 & 2 go straight to the driving `[metro]`, except you can send a `bang` for a single iteration. Inlet 3 controls how many steps in the sequence (negative for reverse), inlet 4 controls the start index.
+- **ms-to-samp** - convert milliseconds to samples at the current sample rate. `$1`: milliseconds in.
 - **nano-seq** - use your nanoKontrol as a 16-step sequencer with up to 16 layers. Inlet 1: toggle to play; inlet 2: tempo (bpm); outlet 1: layer-index-value triplets; outlet 2: sync bangs.
 - **nano-strip** - simple gui for a single control strip on the Korg nanoKontrol 2. First argument is the lane number from 0 - 7, second argument is 0 for button mode (default) or 1 for toggle mode (affects buttons only). Slider and knob are scaled to 0 - 1, buttons output bangs in button mode or 1 / 0 in toggle mode.
 - **nano-transport** - simple gui for the transport, track, & marker controls on the Korg nanoKontrol 2.
@@ -39,11 +40,13 @@ I mostly use purr-data, so vanilla pd compatibility is questionable but probable
 - **quiet-param~** - temporarily mute a signal to quietly change a parameter which can't be interpolated at signal rate.
 - **rand-range** - outputs a random int between two argument ints. Bang for a new number.
 - **round-clip~** - tanh clipping with variable corner roundness (1 - n).
+- **samp-to-ms** - convert samples to milliseconds at the current sample rate. `$1`: samples in.
 - **scope~** - a scope that animates like a traditional scope app. Needs refinement but useful for many applications. Some zoom settings might affect performance.
 - **some-edo** - outputs a new frequency which is a random interval above or below the previous freq using a given Equal Division of the Octave and octave size.
 - **some-harmonic** - outputs a new frequency which is a random integer multiple of the input frequency (or the last output frequency), wrapped to be lower than a given frequency. `$1`: wrap point and start frequency if none specified. `$2`: lower harmonic limit. `$3`: upper harmonic limit.
 - **some-subharmonic** - like `some-harmonic` but with subharmonics.
 - **spigot~** - a spigot~ for audio that opens when sent its creation argument, closes for anything else.
+- **sr** - output samplerate on load, on DSP engage, or on bang.
 - **ss-saw~** - a sine-summed sawtooth wave using an arbitrary number of harmonics. `$1`: frequency. `$2`: number of harmonics. Shorthand for the technique described [here](http://write.flossmanuals.net/pure-data/generating-waveforms/).
 - **ss-squ~** - a sine-summed square wave using an arbitrary number of harmonics. `$1`: frequency. `$2`: number of harmonics. Shorthand for the technique described [here](http://write.flossmanuals.net/pure-data/generating-waveforms/).
 - **ss-tri~** - a sine-summed triangle wave using an arbitrary number of harmonics. `$1`: frequency. `$2`: number of harmonics. Shorthand for the technique described [here](http://write.flossmanuals.net/pure-data/generating-waveforms/).
