@@ -1,0 +1,28 @@
+#N canvas 2559 363 660 300 12;
+#X obj 42 20 inlet~;
+#X obj 42 223 *~;
+#X obj 42 252 outlet~;
+#X obj 60 49 env~;
+#X obj 60 78 dbtorms;
+#X obj 60 107 pack;
+#X obj 60 136 vline~;
+#X obj 60 165 expr~ 1 - pow($v1 \, 0.5);
+#X obj 60 194 pow~ 6;
+#X obj 159 20 inlet;
+#X text 260 49 scales down loud signals \, scales up quiet ones.;
+#X obj 120 49 ii 1024;
+#X obj 120 78 dried/samp-to-ms;
+#X text 260 20 simple self-limiter \, useful for feedback rejection
+;
+#X connect 0 0 1 0;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 1 1;
+#X connect 9 0 8 1;
+#X connect 11 0 12 0;
+#X connect 12 0 5 1;
