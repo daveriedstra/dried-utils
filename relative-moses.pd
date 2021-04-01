@@ -128,7 +128,7 @@ min-max of the incoming stream;
 #X obj 39 255 r \$0-split;
 #X obj 551 211 inlet;
 #X obj 551 269 s \$0-period;
-#X obj 359 240 dried-utils/clamp 0 1;
+#X obj 359 240 dried/clamp 0 1;
 #X obj 551 240 max 0;
 #X obj 437 165 loadbang;
 #X obj 401 211 \$1;
