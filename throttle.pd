@@ -1,21 +1,19 @@
-#N canvas 100 543 450 300 12;
-#X obj 62 34 inlet;
-#X obj 37 163 list;
-#X obj 37 192 list trim;
-#X obj 37 221 outlet;
-#X obj 62 63 t a b b;
-#X msg 108 93 stop;
-#X obj 108 125 delay \$1;
-#X text 196 21 dried/throttlerate control incoming messages \, outputting
-the last receivedafter \$1 ms;
-#X text 118 176 << to to able to deal with arbitrary types \, we needed
-to treat them as a list and thenremove the list selector. real lists
-whichneed the selector will need to add it again.;
-#X connect 0 0 4 0;
-#X connect 1 0 2 0;
+#N canvas 2332 214 450 300 12;
+#X obj 18 94 inlet;
+#X obj 18 262 outlet;
+#X obj 18 163 spigot 1;
+#X obj 85 194 t b b;
+#X msg 101 136 0;
+#X msg 71 136 1;
+#X obj 85 223 delay \$1;
+#X text 18 11 dried/throttle;
+#X text 18 40 rate control incoming messages \, only allowing one through
+every \$1ms;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
 #X connect 2 0 3 0;
-#X connect 4 0 1 1;
-#X connect 4 1 6 0;
-#X connect 4 2 5 0;
-#X connect 5 0 6 0;
-#X connect 6 0 1 0;
+#X connect 3 0 6 0;
+#X connect 3 1 4 0;
+#X connect 4 0 2 1;
+#X connect 5 0 2 1;
+#X connect 6 0 5 0;
