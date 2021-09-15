@@ -1,13 +1,11 @@
-#N canvas 362 435 599 283 12;
+#N canvas 907 320 598 334 12;
 #X obj 48 22 inlet~;
 #X obj 155 24 inlet;
-#X obj 187 82 delay 50;
-#X obj 48 210 *~;
-#X obj 48 238 outlet~;
+#X obj 48 240 *~;
+#X obj 48 268 outlet~;
 #X obj 155 238 outlet;
 #X obj 155 211 f;
 #X obj 155 53 t f b;
-#X obj 66 126 delay 5;
 #X text 285 148 1 - start ramp to 02 - output value after reaching
 03 - 5ms later start ramp to 1;
 #X obj 3 126 loadbang;
@@ -16,20 +14,21 @@ interpolated at signal rate;
 #X text 285 71 this abstraction just mutes the signalfrom the left
 inlet/outlet \, passes thevalue from inlet 2 to outlet 2 \, then unmutes
 the signal;
-#X msg 66 154 1 50;
-#X msg 100 154 0 50;
-#X obj 66 182 line~;
-#X connect 0 0 3 0;
-#X connect 1 0 7 0;
-#X connect 2 0 6 0;
-#X connect 2 0 8 0;
-#X connect 3 0 4 0;
-#X connect 6 0 5 0;
-#X connect 7 0 6 1;
-#X connect 7 1 14 0;
-#X connect 7 1 2 0;
+#X obj 66 182 vline~;
+#X obj 66 211 pow~ 2;
+#X msg 66 154 1;
+#X msg 100 154 0 50 \, 1 50 60;
+#X obj 187 82 delay 55;
+#X connect 0 0 2 0;
+#X connect 1 0 6 0;
+#X connect 2 0 3 0;
+#X connect 5 0 4 0;
+#X connect 6 0 5 1;
+#X connect 6 1 14 0;
+#X connect 6 1 15 0;
 #X connect 8 0 13 0;
-#X connect 10 0 13 0;
-#X connect 13 0 15 0;
-#X connect 14 0 15 0;
-#X connect 15 0 3 1;
+#X connect 11 0 12 0;
+#X connect 12 0 2 1;
+#X connect 13 0 11 0;
+#X connect 14 0 11 0;
+#X connect 15 0 5 0;
