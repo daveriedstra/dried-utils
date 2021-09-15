@@ -1,0 +1,23 @@
+#N canvas 735 419 450 300 12;
+#X obj 13 28 inlet;
+#X obj 13 86 t f b;
+#X obj 13 115 until;
+#X obj 13 144 f;
+#X obj 46 144 + 1;
+#X obj 13 173 outlet;
+#X msg 55 115 0;
+#X text 18 233 count-to: count to the number passed to it via until
+;
+#X obj 13 57 route float bang;
+#X obj 67 86 f \$1;
+#X connect 0 0 8 0;
+#X connect 1 0 2 0;
+#X connect 1 1 6 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 0 5 0;
+#X connect 4 0 3 1;
+#X connect 6 0 3 1;
+#X connect 8 0 1 0;
+#X connect 8 1 9 0;
+#X connect 9 0 1 0;

@@ -1,0 +1,16 @@
+#N canvas 720 299 718 308 12;
+#X obj 30 165 table \$0-tab;
+#X msg 30 223 1 0;
+#X obj 30 252 tabwrite \$0-tab;
+#X obj 30 194 loadbang;
+#X obj 30 76 tabplay~ \$0-tab;
+#X obj 30 18 inlet;
+#X obj 30 47 b;
+#X obj 30 105 outlet~;
+#X text 211 12 trig~ - write a single \, full-amplitude (1) sample
+to the audio stream.;
+#X connect 1 0 2 0;
+#X connect 3 0 1 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 0;
+#X connect 6 0 4 0;

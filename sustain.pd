@@ -1,0 +1,16 @@
+#N canvas 357 422 450 300 12;
+#X obj 16 16 inlet;
+#X obj 67 16 inlet;
+#X obj 118 45 > 0;
+#X obj 118 16 ctlin 64 \$1;
+#X obj 16 131 outlet;
+#X obj 118 131 outlet;
+#X text 13 168 put after notein to use sustain on the provided midi
+channel (or all if none specified);
+#X obj 16 102 cyclone/sustain;
+#X connect 0 0 7 0;
+#X connect 1 0 7 1;
+#X connect 2 0 7 2;
+#X connect 3 0 2 0;
+#X connect 7 0 4 0;
+#X connect 7 1 5 0;

@@ -1,0 +1,51 @@
+#N canvas 617 264 509 547 12;
+#X obj 402 21 block~ 1024;
+#X obj 25 15 inlet~;
+#X obj 27 251 outlet;
+#X obj 27 106 bang~;
+#X msg 27 161 0;
+#X obj 27 188 v buff_squ_\$0;
+#X obj 402 101 v eps_\$0;
+#X obj 27 220 expr -0.691 + 10 * log10($f1 / 1024 + eps_\$0);
+#X obj 25 40 fexpr~ buff_squ_\$0 = buff_squ_\$0 + pow($x1 \, 2);
+#X obj 27 131 t b b;
+#X text 26 291 Calculates the LUFS loudness of the incoming signal
+;
+#X text 26 339 similar to FluCoMa's fluid.loudness \, except cheaper
+\, more portable \, and less accurate (still usually good to within
+1dB).;
+#X text 26 393 each block \, calculate and output the loudness of the
+previous block's mean-squared \, then sum the squares of the current
+block;
+#X text 56 315 -0.691 + 10log10(mean(sum(samples^2)) + epsilon);
+#X msg 26 472 https://github.com/flucoma/flucoma-core/blob/19e87109a1048eb48d78a6bc3a01af65d9105333/include/algorithms/public/Loudness.hpp#L51
+;
+#X text 26 447 eps_\$0 is pd's epsilon (I think...);
+#N canvas 1276 545 450 300 run-with-dsp 0;
+#X obj 16 12 r pd;
+#X obj 16 37 route dsp;
+#X obj 16 62 select 1;
+#X msg 16 87 start;
+#X msg 76 87 stop;
+#X obj 79 62 loadbang;
+#X obj 16 112 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 3 0 6 0;
+#X connect 4 0 6 0;
+#X connect 5 0 4 0;
+#X restore 74 15 pd run-with-dsp;
+#X msg 402 76 1.2e-38;
+#X obj 402 51 loadbang;
+#X connect 1 0 8 0;
+#X connect 3 0 9 0;
+#X connect 4 0 5 0;
+#X connect 5 0 7 0;
+#X connect 7 0 2 0;
+#X connect 9 0 4 0;
+#X connect 9 1 5 0;
+#X connect 16 0 8 0;
+#X connect 17 0 6 0;
+#X connect 18 0 17 0;

@@ -1,0 +1,15 @@
+#N canvas 2440 411 450 300 12;
+#X msg 7 125 \$1 0;
+#X obj 7 67 moses 127;
+#X obj 7 96 pipe 1;
+#X obj 7 38 + 1;
+#X obj 7 9 inlet;
+#X obj 7 154 outlet;
+#X text 12 192 midi panic: send a bang \, get note-offs for all 127
+midi notes with 1-ms separation so that they actually get sent;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X connect 4 0 3 0;

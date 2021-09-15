@@ -1,0 +1,25 @@
+#N canvas 735 419 450 300 12;
+#X obj 26 67 inlet;
+#X obj 26 96 moses;
+#X obj 58 125 moses;
+#X obj 58 154 b;
+#X obj 58 183 f \$1;
+#X obj 58 212 outlet;
+#X obj 75 9 loadbang;
+#X obj 75 38 f \$1;
+#X obj 75 67 - \$2;
+#X obj 113 67 + \$2;
+#X text 26 241 use this to create an artificial detente (snap) so that
+incoming numbers within \$2 on either side of \$1 output \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 5 0;
+#X connect 1 1 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 5 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 7 0 9 0;
+#X connect 8 0 1 1;
+#X connect 9 0 2 1;

@@ -1,0 +1,24 @@
+#N canvas 645 469 450 300 12;
+#X obj 16 22 inlet~;
+#X obj 96 19 inlet~;
+#X obj 16 210 outlet~;
+#X obj 16 181 *~;
+#X obj 96 178 *~;
+#X obj 34 116 +~ 0.25;
+#X obj 34 145 sin~;
+#X obj 114 145 sin~;
+#X obj 172 48 expr~ ($v1 + 1) / 8;
+#X obj 172 19 inlet~;
+#X text 172 110 equal-power crossfade;
+#X text 172 139 control inlet is from -1 (only left signal) to +1 (only
+right signal);
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 6 0;
+#X connect 6 0 3 1;
+#X connect 7 0 4 1;
+#X connect 8 0 7 0;
+#X connect 8 0 5 0;
+#X connect 9 0 8 0;

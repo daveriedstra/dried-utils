@@ -1,0 +1,11 @@
+#N canvas 2824 461 450 300 12;
+#X obj 14 13 inlet;
+#X obj 14 42 t f f;
+#X obj 14 71 expr $f1 - $f2;
+#X obj 14 100 outlet;
+#X text 18 148 outputs the difference between this number and the previous
+input number;
+#X connect 0 0 1 0;
+#X connect 1 0 2 1;
+#X connect 1 1 2 0;
+#X connect 2 0 3 0;
