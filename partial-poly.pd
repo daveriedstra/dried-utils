@@ -1,5 +1,5 @@
-#N canvas 605 106 733 380 12;
-#N canvas 550 416 586 508 relative 1;
+#N canvas 605 107 733 380 12;
+#N canvas 550 416 586 508 relative 0;
 #X obj 134 24 inlet;
 #X obj 209 22 inlet;
 #X obj 134 294 outlet;
@@ -118,7 +118,6 @@ pitch.pass all other pitchesuntil the first pitch's noteoff.;
 #X obj 141 232 outlet;
 #X obj 141 20 inlet;
 #X obj 215 20 inlet;
-#X obj 141 202 poly \$1, f 11;
 #X text 341 20 dried/partial-polyplay partials above a held pitch
 ;
 #X text 341 66 use like [poly]. hold down a note \, this will becomethe
@@ -147,18 +146,19 @@ of the intervaleg: holding A4 and playing Bb4 will give the 1stpartial
 #X text 341 205 arguments:1) number of voices;
 #X text 341 250 outlets:1) voice number2) pitch (Hz)3) velocity
 ;
-#X connect 0 0 9 0;
-#X connect 0 1 9 1;
-#X connect 1 0 9 0;
+#X obj 141 202 poly \$1 \$2, f 11;
+#X connect 0 0 18 0;
+#X connect 0 1 18 1;
+#X connect 1 0 18 0;
 #X connect 2 0 1 0;
 #X connect 3 0 1 0;
 #X connect 4 0 5 0;
-#X connect 5 0 9 0;
-#X connect 7 0 13 0;
+#X connect 5 0 18 0;
+#X connect 7 0 12 0;
 #X connect 8 0 0 1;
-#X connect 9 0 6 0;
-#X connect 9 1 15 0;
-#X connect 9 2 16 0;
-#X connect 13 0 0 0;
-#X connect 13 1 0 1;
-#X connect 14 0 9 0;
+#X connect 12 0 0 0;
+#X connect 12 1 0 1;
+#X connect 13 0 18 0;
+#X connect 18 0 6 0;
+#X connect 18 1 14 0;
+#X connect 18 2 15 0;
