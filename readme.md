@@ -39,7 +39,7 @@ I mostly use purr-data, so vanilla pd compatibility is questionable but probable
 - **nano-transport** - simple gui for the transport, track, & marker controls on the Korg nanoKontrol 2.
 - **noteon-to-note** - converts pitch-value-duration triplets into the appropriate note-on / note-off sequences (for use with `[poly]`)
 - **noteon-to-mono** - quick-n-dirty mono converter (for those times when you can't be bothered to send note-offs). Send pitch/value pairs and have them converted to the appropriate note-on/-off sequences. Notes sustain until the next note-on or the specified max duration (`$1`, ms).
-- **oscin** - receive and parse OSC messages over UDP on port `$1`.
+- **oscin** - receive and parse OSC messages over UDP on localhost on port `$1`.
 - **pan~** - drop-in replacement for `pan` but using signal as right input for smoother panning changes
 - **partial-counter** - start at 1, bang left for up, mid for down, right to reset, below zero is a fraction.
 - **partial-poly** - allows simple access to just tuned partials with midi keyboard. Held pitch is root, pitches above or below will sound the partial of their semitone difference (eg, an F4 above C4 will sound the 5th partial, ie, E). Use like poly.
